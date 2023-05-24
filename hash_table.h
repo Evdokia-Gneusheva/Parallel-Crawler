@@ -57,6 +57,21 @@ public:
         return true;
     }
 
+    bool remove(T x)
+    {
+        std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(x.url) % locks.size()]);
+        int myBucket = std::hash<std::string>{}(x.url) % table.size();
+        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
+        {
+            if (*it == x)
+            {
+                table[myBucket].erase(it);
+                return true;
+            }
+        }
+        return false;
+    }
+
     void resize()
     {
         std::vector<std::list<T>> newTable(table.size() * 2);
@@ -81,6 +96,24 @@ public:
     std::list<T> get_bucket(T x)
     {
         return table[std::hash<std::string>{}(x.url) % table.size()];
+    }
+
+    int get_count()
+    {
+        int count = 0;
+        for (long long unsigned int i = 0; i < locks.size(); i++)
+        {
+            std::lock_guard<std::mutex> lock(locks[i]);
+        }
+        
+        for (auto &bucket : table)
+        {
+            count += bucket.size();
+            // std::cout << "Number of items in a bucket: " << bucket.size() << std::endl;
+
+        }
+
+        return count;
     }
 };
 
