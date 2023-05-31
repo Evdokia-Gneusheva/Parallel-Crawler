@@ -5,8 +5,15 @@
 struct Webpage
 {
     std::string url;
-    std::string content;
+    char* content;
     std::vector<std::string> externalLinks;
+
+    Webpage(const std::string& webpageUrl, const char* webpageContent, size_t contentSize)
+        : url(webpageUrl), externalLinks()
+    {
+        content = (char*)malloc(contentSize);
+        std::memcpy(content, webpageContent, contentSize);
+    }
 };
 
 #endif
