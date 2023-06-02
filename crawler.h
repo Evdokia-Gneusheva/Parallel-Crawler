@@ -23,19 +23,25 @@ struct WriteFunctionData
 std::set<std::string> extract_links(char *receivedData, std::set<std::string> *checked_urls)
 {
     std::set<std::string> links;
-    std::cregex_iterator url_begin(receivedData, receivedData + strlen(receivedData), std::regex("<a\\s+(?:[^>]*?\\s+)?href=\"([^\"]*)\"", std::regex_constants::icase));
-    std::cregex_iterator url_end;
-    for (std::cregex_iterator i = url_begin; i != url_end; ++i)
+    char *start = receivedData;
+    char *end = NULL;
+
+    while ((start = strstr(start, "<a ")) != NULL)
     {
-        std::cmatch match = *i;
-        if (checked_urls->count(match[1].str()))
+        if ((start = strstr(start, "href=\"")) != NULL)
         {
-        }
-        else
-        {
-            links.insert(match[1].str());
+            start += 6; // Skip past "href=\""
+            if ((end = strchr(start, '\"')) != NULL)
+            {
+                std::string url(start, end);
+                if (checked_urls->count(url) == 0)
+                {
+                    links.insert(url);
+                }
+            }
         }
     }
+
     return links;
 }
 
