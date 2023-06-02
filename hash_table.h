@@ -79,7 +79,7 @@ public:
         for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it) {
 
             if (*it == x) {
-                it->externalLinks.insert(it->externalLinks.end(), links.begin(), links.end());
+                it->externalLinks.insert(links.begin(), links.end());
                 return true;
             }
         }

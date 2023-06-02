@@ -11,14 +11,12 @@
 
 int main()
 {
+    
     //manualTestingHash();
     std::cout << "hello, how are asddasyou?" << std::endl;
 
     std::set<std::string> urls;
-    urls.insert("http://www.microsoft.com");
-    urls.insert("http://slashdot.org");
-    urls.insert("http://www.wikipedia.org");
-    urls.insert("http://www.yahoo.com");
+    urls.insert("http://www.grafulankos.lt");
 
     int num_urls =  4;
     int max_wait = 30 * 1000; /* Wait max. 30 seconds */

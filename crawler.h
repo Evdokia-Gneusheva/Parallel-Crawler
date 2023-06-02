@@ -20,25 +20,17 @@ struct WriteFunctionData
     std::set<std::string> *new_urls;
 };
 
-std::set<std::string> extract_links(char *receivedData, std::set<std::string> *checked_urls)
+std::set<std::string> extract_links(const std::string& receivedData, std::set<std::string>& checked_urls, std::string url)
 {
     std::set<std::string> links;
-    char *start = receivedData;
-    char *end = NULL;
+    std::regex link_pattern("<a[^>]*href=\"([^\"]*)\"[^>]*>");
 
-    while ((start = strstr(start, "<a ")) != NULL)
+    for (std::sregex_iterator it(receivedData.begin(), receivedData.end(), link_pattern), end_it; it != end_it; ++it)
     {
-        if ((start = strstr(start, "href=\"")) != NULL)
+        std::string url = (*it)[1].str();
+        if (checked_urls.find(url) == checked_urls.end() && url.find(url) != std::string::npos)
         {
-            start += 6; // Skip past "href=\""
-            if ((end = strchr(start, '\"')) != NULL)
-            {
-                std::string url(start, end);
-                if (checked_urls->count(url) == 0)
-                {
-                    links.insert(url);
-                }
-            }
+            links.insert(url);
         }
     }
 
@@ -53,19 +45,22 @@ static size_t cb(char *data, size_t size, size_t nmemb, void *userdata)
     std::memcpy(receivedData, data, totalSize);
 
     WriteFunctionData *userData = (struct WriteFunctionData *)userdata;
-    std::set<std::string> links = extract_links(receivedData, userData->checked_urls);
+    std::set<std::string> links = extract_links(receivedData, *(userData->checked_urls), userData->url);
 
     userData->new_urls->insert(links.begin(), links.end());
     Webpage toInsert(userData->url, links, userData->current_level);
-
+    
     if (userData->HashSet->contains(toInsert))
-    {
+    {   
+        //std::cout << "Already contains: " << userData->url << std::endl;
         userData->HashSet->add_links(toInsert, links);
+        //std::cout << userData->url << std::endl;
     }
     else
-    {
+    {   
+        //std::cout << "Does not contain: " << userData->url << std::endl;
         userData->HashSet->add(toInsert);
-        std::cout << userData->url << std::endl;
+        //std::cout << userData->url << std::endl;
     }
 
     return totalSize;
@@ -100,7 +95,7 @@ std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, in
     CURL *eh = NULL;
     CURLMsg *msg = NULL;
     CURLcode return_code;
-    int still_running = 0, i = 0, msgs_left = 0;
+    int still_running = 0, msgs_left = 0;
     int http_status_code;
     const char *szUrl;
 
@@ -118,7 +113,7 @@ std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, in
     }
 
     curl_multi_perform(cm, &still_running);
-
+    std::cout << "Crawling..." << std::endl;
     do
     {
         int numfds = 0;
@@ -172,7 +167,7 @@ std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, in
     }
 
     curl_multi_cleanup(cm);
-
+    std::cout << "Finished crawling" << std::endl;
     // Move contents of current_urls to checked_urls
     checked_urls->insert(current_urls->begin(), current_urls->end());
 
@@ -197,12 +192,6 @@ std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, in
         std::cout << url << std::endl;
     }
 
-    // Print new_urls
-    std::cout << "\nNew URLs:" << std::endl;
-    for (const auto &url : *new_urls)
-    {
-        std::cout << url << std::endl;
-    }
 
     return urls;
 }
