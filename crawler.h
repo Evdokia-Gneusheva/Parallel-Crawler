@@ -20,17 +20,39 @@ struct WriteFunctionData
     std::set<std::string> *new_urls;
 };
 
-std::set<std::string> extract_links(const std::string& receivedData, std::set<std::string>& checked_urls, std::string url)
+std::set<std::string> extract_links(const std::string &receivedData, std::set<std::string> &checked_urls, std::string root_url)
 {
     std::set<std::string> links;
     std::regex link_pattern("<a[^>]*href=\"([^\"]*)\"[^>]*>");
 
+    // Remove the scheme from the root_url
+    size_t pos = root_url.find("://");
+    if (pos != std::string::npos)
+    {
+        root_url = root_url.substr(pos + 3);
+    }
+
     for (std::sregex_iterator it(receivedData.begin(), receivedData.end(), link_pattern), end_it; it != end_it; ++it)
     {
         std::string url = (*it)[1].str();
-        if (checked_urls.find(url) == checked_urls.end() && url.find(url) != std::string::npos)
+
+        // Remove the scheme from the extracted URL
+        pos = url.find("://");
+        if (pos != std::string::npos)
         {
-            links.insert(url);
+            url = url.substr(pos + 3);
+        }
+
+        if (checked_urls.find(url) == checked_urls.end())
+        {
+            if (url.find(root_url) == 0) // url starts with root_url
+            {
+                links.insert(url);
+            }
+            else if (url[0] == '/') // url is a relative URL
+            {
+                links.insert(root_url + url);
+            }
         }
     }
 
@@ -49,18 +71,18 @@ static size_t cb(char *data, size_t size, size_t nmemb, void *userdata)
 
     userData->new_urls->insert(links.begin(), links.end());
     Webpage toInsert(userData->url, links, userData->current_level);
-    
+
     if (userData->HashSet->contains(toInsert))
-    {   
-        //std::cout << "Already contains: " << userData->url << std::endl;
+    {
+        // std::cout << "Already contains: " << userData->url << std::endl;
         userData->HashSet->add_links(toInsert, links);
-        //std::cout << userData->url << std::endl;
+        // std::cout << userData->url << std::endl;
     }
     else
-    {   
-        //std::cout << "Does not contain: " << userData->url << std::endl;
+    {
+        // std::cout << "Does not contain: " << userData->url << std::endl;
         userData->HashSet->add(toInsert);
-        //std::cout << userData->url << std::endl;
+        // std::cout << userData->url << std::endl;
     }
 
     return totalSize;
@@ -191,7 +213,6 @@ std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, in
     {
         std::cout << url << std::endl;
     }
-
 
     return urls;
 }
