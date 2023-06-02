@@ -7,39 +7,72 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <regex>
+#include <set>
 
-struct WriteFunctionData {
+struct WriteFunctionData
+{
     std::string url;
     StripedHashSet<Webpage> *HashSet;
+    int current_level;
+
+    std::set<std::string> *checked_urls;
+    std::set<std::string> *new_urls;
 };
 
+std::set<std::string> extract_links(char *receivedData, std::set<std::string> *checked_urls)
+{
+    std::set<std::string> links;
+    std::cregex_iterator url_begin(receivedData, receivedData + strlen(receivedData), std::regex("<a\\s+(?:[^>]*?\\s+)?href=\"([^\"]*)\"", std::regex_constants::icase));
+    std::cregex_iterator url_end;
+    for (std::cregex_iterator i = url_begin; i != url_end; ++i)
+    {
+        std::cmatch match = *i;
+        if (checked_urls->count(match[1].str()))
+        {
+        }
+        else
+        {
+            links.insert(match[1].str());
+        }
+    }
+    return links;
+}
 
-static size_t cb(char* data, size_t size, size_t nmemb, void* userdata) {
-
+static size_t cb(char *data, size_t size, size_t nmemb, void *userdata)
+{
     size_t totalSize = size * nmemb;
 
-    // Copy the received data to the dynamically allocated array
-    char* receivedData = (char*)malloc(totalSize);
+    char *receivedData = (char *)malloc(totalSize);
     std::memcpy(receivedData, data, totalSize);
 
-    // Print the received data
-    //std::cout << "Received Data: " << receivedData << std::endl;
+    WriteFunctionData *userData = (struct WriteFunctionData *)userdata;
+    std::set<std::string> links = extract_links(receivedData, userData->checked_urls);
 
-    WriteFunctionData* userData = (struct WriteFunctionData*)userdata;
+    userData->new_urls->insert(links.begin(), links.end());
+    Webpage toInsert(userData->url, links, userData->current_level);
 
-    Webpage toInsert(userData->url, receivedData, totalSize);
-    
-    userData->HashSet->add(toInsert);
+    if (userData->HashSet->contains(toInsert))
+    {
+        userData->HashSet->add_links(toInsert, links);
+    }
+    else
+    {
+        userData->HashSet->add(toInsert);
+        std::cout << userData->url << std::endl;
+    }
 
     return totalSize;
 }
 
-static void init(CURLM *cm, std::string url, StripedHashSet<Webpage> &HashSet)
-{   
+static void init(CURLM *cm, std::string url, StripedHashSet<Webpage> &HashSet, std::set<std::string> *checked_urls, std::set<std::string> *new_urls)
+{
     WriteFunctionData *data = new WriteFunctionData;
     data->url = url;
     data->HashSet = &HashSet;
-    
+    data->current_level = 1;
+    data->checked_urls = checked_urls;
+    data->new_urls = new_urls;
 
     CURL *eh = curl_easy_init();
 
@@ -54,9 +87,7 @@ static void init(CURLM *cm, std::string url, StripedHashSet<Webpage> &HashSet)
     curl_multi_add_handle(cm, eh);
 }
 
-
-
-std::vector<std::string> crawl_webpage(std::vector<std::string> urls, int num_urls, int max_wait, StripedHashSet<Webpage> &HashSet)
+std::set<std::string> crawl_webpage(std::set<std::string> urls, int num_urls, int max_wait, StripedHashSet<Webpage> &HashSet)
 {
 
     CURLM *cm = NULL;
@@ -67,15 +98,18 @@ std::vector<std::string> crawl_webpage(std::vector<std::string> urls, int num_ur
     int http_status_code;
     const char *szUrl;
 
+    std::set<std::string> *checked_urls = new std::set<std::string>();
+    std::set<std::string> *current_urls = new std::set<std::string>(urls);
+    std::set<std::string> *new_urls = new std::set<std::string>();
+
     curl_global_init(CURL_GLOBAL_ALL);
 
     cm = curl_multi_init();
 
-    for (i = 0; i < num_urls; ++i)
+    for (std::set<std::string>::iterator it = current_urls->begin(); it != current_urls->end(); ++it)
     {
-        init(cm, urls[i], HashSet);
+        init(cm, *it, HashSet, checked_urls, new_urls);
     }
-    urls.clear();
 
     curl_multi_perform(cm, &still_running);
 
@@ -133,8 +167,36 @@ std::vector<std::string> crawl_webpage(std::vector<std::string> urls, int num_ur
 
     curl_multi_cleanup(cm);
 
-    //Here we will check if newUrls are null, if not we call crawl_webpage recursively 
-    //with the new links
+    // Move contents of current_urls to checked_urls
+    checked_urls->insert(current_urls->begin(), current_urls->end());
+
+    // Move contents of new_urls to current_urls
+    current_urls->clear();
+    current_urls->insert(new_urls->begin(), new_urls->end());
+
+    // Make new_urls empty
+    new_urls->clear();
+
+    // Print checked_urls
+    std::cout << "Checked URLs:" << std::endl;
+    for (const auto &url : *checked_urls)
+    {
+        std::cout << url << std::endl;
+    }
+
+    // Print current_urls
+    std::cout << "\nCurrent URLs:" << std::endl;
+    for (const auto &url : *current_urls)
+    {
+        std::cout << url << std::endl;
+    }
+
+    // Print new_urls
+    std::cout << "\nNew URLs:" << std::endl;
+    for (const auto &url : *new_urls)
+    {
+        std::cout << url << std::endl;
+    }
 
     return urls;
 }

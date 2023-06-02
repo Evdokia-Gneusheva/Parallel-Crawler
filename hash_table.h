@@ -72,6 +72,22 @@ public:
         return false;
     }
 
+    bool add_links(T& x, const std::set<std::string>& links) {
+
+        std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(x.url) % locks.size()]);
+        int myBucket = std::hash<std::string>{}(x.url) % table.size();
+        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it) {
+
+            if (*it == x) {
+                it->externalLinks.insert(it->externalLinks.end(), links.begin(), links.end());
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+
     void resize()
     {
         std::vector<std::list<T>> newTable(table.size() * 2);
