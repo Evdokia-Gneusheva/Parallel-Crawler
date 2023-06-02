@@ -13,7 +13,6 @@ int main()
 {
     
     //manualTestingHash();
-    std::cout << "hello, how are asddasyou?" << std::endl;
 
     std::set<std::string> urls;
     urls.insert("http://www.grafulankos.lt");
