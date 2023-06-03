@@ -72,7 +72,7 @@ public:
         return false;
     }
 
-    bool add_links(T& x, const std::set<std::string>& links) {
+    bool add_links(T& x, const std::unordered_set<std::string>& links) {
 
         std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(x.url) % locks.size()]);
         int myBucket = std::hash<std::string>{}(x.url) % table.size();
@@ -131,6 +131,22 @@ public:
 
         return count;
     }
+
+Webpage* get(const std::string& url)
+{
+    std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(url) % locks.size()]);
+    int myBucket = std::hash<std::string>{}(url) % table.size();
+    for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
+    {
+        if (it->url == url)
+        {
+            return &(*it);
+        }
+    }
+    return nullptr;
+}
+
+
 };
 
 #endif

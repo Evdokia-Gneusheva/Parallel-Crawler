@@ -87,6 +87,7 @@
         "variant": "cpp",
         "__nullptr": "cpp",
         "__string": "cpp",
-        "chrono": "cpp"
+        "chrono": "cpp",
+        "unordered_set": "cpp"
     }
 }

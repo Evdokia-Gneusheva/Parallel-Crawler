@@ -1,17 +1,22 @@
 #include <iostream>
-#include <set>
+#include <unordered_set>
 
 #ifndef WEBPAGE_H
 #define WEBPAGE_H
 
 struct Webpage
 {
+    std::string parent;
     std::string url;
-    std::set<std::string> externalLinks;
+    std::unordered_set<std::string> externalLinks;
     int current_level;
 
-    Webpage(const std::string &webpageUrl, std::set<std::string> links, int level)
-        : url(webpageUrl), externalLinks(links), current_level(level) {}
+
+    Webpage() : parent(), url(), externalLinks(), current_level(0) {}  // Empty constructor
+
+
+    Webpage(const std::string &webpageUrl, std::unordered_set<std::string> links, int level, std::string parentUrl)
+        : url(webpageUrl),  parent(parentUrl), externalLinks(links), current_level(level) {}
 };
 
 #endif
