@@ -146,6 +146,24 @@ Webpage* get(const std::string& url)
     return nullptr;
 }
 
+void print_all()
+{
+    for (long long unsigned int i = 0; i < locks.size(); i++)
+    {
+        std::lock_guard<std::mutex> lock(locks[i]);
+    }
+
+    for (long long unsigned int i = 0; i < table.size(); i++)
+    {
+        std::cout << "Bucket " << i << ":\n";
+        for (auto &element : table[i])
+        {
+            std::cout << element.url << "\n";
+        }
+        std::cout << "\n";
+    }
+}
+
 
 };
 

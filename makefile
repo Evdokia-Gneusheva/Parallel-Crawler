@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -std=c++11 -Wall -I "C:/curl/curl-8.1.2_2-win64-mingw/include"
+CFLAGS = -std=c++11 -g -Wall -I "C:/curl/curl-8.1.2_2-win64-mingw/include"
 LDFLAGS = -L "C:/curl/curl-8.1.2_2-win64-mingw/lib" -lcurl
 
 TARGET = main
@@ -10,4 +10,4 @@ $(TARGET): $(SRCS)
 
 .PHONY: clean
 clean:
-	del $(TARGET).exe
+	del /Q $(TARGET).exe gmon.out
