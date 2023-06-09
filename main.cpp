@@ -41,24 +41,24 @@ void execute_process(bool only_local = true, int max_links_per_thread = 50, int 
 
     if (file.is_open())
     {
-        file << "--------------------------------------------" << std::endl;
-        file << "Elapsed time: " << elapsed.count() << " seconds, using " << numthreads << " threads" << std::endl;
-        file << "Links visited: " << number << ", Tried to visit:" << num_links << std::endl;
-        file << "Links per thread: " << max_links_per_thread << std::endl;
-        file << "--------------------------------------------" << std::endl;
-        std::cout << "Data written to the file." << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
+        std::cout << "Elapsed time: " << elapsed.count() << " seconds, using " << numthreads << " threads" << std::endl;
+        std::cout << "Links visited: " << number << ", Tried to visit:" << num_links << std::endl;
+        std::cout << "Links per thread: " << max_links_per_thread << std::endl;
+        std::cout << "--------------------------------------------" << std::endl;
+        //std::cout << "Data written to the file." << std::endl;
+    
     }
     else
     {
-        std::cout << "Failed to open the file." << std::endl;
+        //std::cout << "Failed to open the file." << std::endl;
     }
 }
 
-int main()
-{
+void test(){
 
-    int thread_numbers[] = {8, 16, 32};
-    int links_per_thread_numbers[] = {8, 16, 32, 64, 128};
+ int thread_numbers[] = {8, 16, 32};
+    int links_per_thread_numbers[] = {16, 8, 32};
     int links_number[] = {10000};
 
     int thread_numbers_size = sizeof(thread_numbers) / sizeof(thread_numbers[0]);
@@ -89,5 +89,35 @@ int main()
         }
     }
 
-    file.close();
+
+}
+
+
+int main(int argc, char *argv[]) {
+
+    bool only_local = true;
+    int max_links_per_thread = 16;
+    int max_level = 1000;
+    bool disregard_leftovers = false;
+    int numthreads = 16;
+    int num_links = 500;
+
+
+    if (argc == 7) {
+        only_local = std::atoi(argv[1]);
+        max_links_per_thread = std::atoi(argv[2]);
+        max_level = std::atoi(argv[3]);
+        disregard_leftovers = std::atoi(argv[4]);
+        numthreads = std::atoi(argv[5]);
+        num_links = std::atoi(argv[6]);
+
+        //std::cout << only_local << max_links_per_thread << max_level << disregard_leftovers << numthreads << num_links << std::endl;
+
+    } else if (argc > 1) {
+        std::cerr << "Usage: " << argv[0] << " [only_local] [max_links_per_thread] [max_level] [disregard_leftovers] [num_threads] [num_links]\n";
+        return 1;
+    }
+
+    execute_process(only_local, max_links_per_thread, max_level, disregard_leftovers, numthreads, num_links);
+    return 0;
 }
