@@ -43,17 +43,24 @@ public:
     }
 
     bool add(T x)
-    {
-        std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(x.url) % locks.size()]);
+    {   
         int myBucket = std::hash<std::string>{}(x.url) % table.size();
-        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
         {
-            if (*it == x)
+            std::lock_guard<std::mutex> lock(locks[myBucket]);
+            for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
             {
-                return false;
+                if (*it == x)
+                {
+                    return false;
+                }
             }
+            table[myBucket].push_back(x);
         }
-        table[myBucket].push_back(x);
+        
+        if (table[myBucket].size() > table.size())
+        {   
+            resize();
+        }
         return true;
     }
 
@@ -72,42 +79,48 @@ public:
         return false;
     }
 
-    bool add_links(T& x, const std::unordered_set<std::string>& links) {
+    bool add_links(T &x, const std::unordered_set<std::string> &links)
+    {
 
         std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(x.url) % locks.size()]);
         int myBucket = std::hash<std::string>{}(x.url) % table.size();
-        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it) {
+        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
+        {
 
-            if (*it == x) {
+            if (*it == x)
+            {
                 it->externalLinks.insert(links.begin(), links.end());
                 return true;
             }
         }
         return false;
-
     }
 
+void resize()
+{
 
-    void resize()
+    std::vector<std::list<T>> newTable(table.size() * 2);
+    std::vector<std::mutex> newLocks(table.size() * 2); // Updated locks vector
+
+    std::vector<std::unique_lock<std::mutex>> currentLocks;
+    for (auto &lock : locks) {
+        currentLocks.emplace_back(lock);
+    }
+
+    for (long long unsigned int i = 0; i < table.size(); i++)
     {
-        std::vector<std::list<T>> newTable(table.size() * 2);
-
-        for (long long unsigned int i = 0; i < locks.size(); i++)
+        for (auto it : table[i])
         {
-            std::lock_guard<std::mutex> lock(locks[i]);
+            int myBucket = std::hash<std::string>{}(it.url) % newTable.size();
+            newTable[myBucket].push_back(it);
         }
-
-        for (long long unsigned int i = 0; i < table.size(); i++)
-        {
-            for (auto it : table[i])
-            {
-                int myBucket = std::hash<std::string>{}(it.url) % newTable.size();
-                newTable[myBucket].push_back(it);
-            }
-        }
-
-        table = newTable;
     }
+
+    table = newTable;
+    locks = std::move(newLocks); // Update the locks vector with the new locks
+    std::cout << "Hello im ending resizing" << std::endl;
+
+}
 
     std::list<T> get_bucket(T x)
     {
@@ -121,50 +134,47 @@ public:
         {
             std::lock_guard<std::mutex> lock(locks[i]);
         }
-        
+
         for (auto &bucket : table)
         {
             count += bucket.size();
             // std::cout << "Number of items in a bucket: " << bucket.size() << std::endl;
-
         }
 
         return count;
     }
 
-Webpage* get(const std::string& url)
-{
-    std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(url) % locks.size()]);
-    int myBucket = std::hash<std::string>{}(url) % table.size();
-    for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
+    Webpage *get(const std::string &url)
     {
-        if (it->url == url)
+        std::lock_guard<std::mutex> lock(locks[std::hash<std::string>{}(url) % locks.size()]);
+        int myBucket = std::hash<std::string>{}(url) % table.size();
+        for (auto it = table[myBucket].begin(); it != table[myBucket].end(); ++it)
         {
-            return &(*it);
+            if (it->url == url)
+            {
+                return &(*it);
+            }
+        }
+        return nullptr;
+    }
+
+    void print_all()
+    {
+        for (long long unsigned int i = 0; i < locks.size(); i++)
+        {
+            std::lock_guard<std::mutex> lock(locks[i]);
+        }
+
+        for (long long unsigned int i = 0; i < table.size(); i++)
+        {
+            std::cout << "Bucket " << i << ":\n";
+            for (auto &element : table[i])
+            {
+                std::cout << element.url << "\n";
+            }
+            std::cout << "\n";
         }
     }
-    return nullptr;
-}
-
-void print_all()
-{
-    for (long long unsigned int i = 0; i < locks.size(); i++)
-    {
-        std::lock_guard<std::mutex> lock(locks[i]);
-    }
-
-    for (long long unsigned int i = 0; i < table.size(); i++)
-    {
-        std::cout << "Bucket " << i << ":\n";
-        for (auto &element : table[i])
-        {
-            std::cout << element.url << "\n";
-        }
-        std::cout << "\n";
-    }
-}
-
-
 };
 
 #endif
