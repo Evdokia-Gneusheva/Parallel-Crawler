@@ -1,0 +1,619 @@
+--------------------------------------------
+Elapsed time: 71.5963 seconds, using 1 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 103.621 seconds, using 1 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 61.0344 seconds, using 1 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 178.348 seconds, using 1 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 132.507 seconds, using 1 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 155.39 seconds, using 1 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 410.149 seconds, using 1 threads
+Links visited: 500, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 439.089 seconds, using 1 threads
+Links visited: 500, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 539.307 seconds, using 1 threads
+Links visited: 499, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 42.6863 seconds, using 2 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 47.8446 seconds, using 2 threads
+Links visited: 96, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 113.981 seconds, using 2 threads
+Links visited: 98, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 86.8069 seconds, using 2 threads
+Links visited: 195, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 110.322 seconds, using 2 threads
+Links visited: 197, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 78.1759 seconds, using 2 threads
+Links visited: 193, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 350.595 seconds, using 2 threads
+Links visited: 480, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 325.46 seconds, using 2 threads
+Links visited: 486, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 312.113 seconds, using 2 threads
+Links visited: 476, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 27.0902 seconds, using 4 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 23.3385 seconds, using 4 threads
+Links visited: 92, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 25.1464 seconds, using 4 threads
+Links visited: 98, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 58.2305 seconds, using 4 threads
+Links visited: 196, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 54.3243 seconds, using 4 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 50.4438 seconds, using 4 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 143.233 seconds, using 4 threads
+Links visited: 473, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 179.722 seconds, using 4 threads
+Links visited: 486, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 132.756 seconds, using 4 threads
+Links visited: 484, Tried to visit:500
+Links per thread: 1
+----------------------------------------------------------------------------------------
+Elapsed time: 13.9088 seconds, using 8 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 14.5971 seconds, using 8 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 15.5123 seconds, using 8 threads
+Links visited: 98, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 38.2651 seconds, using 8 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 32.8019 seconds, using 8 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 27.8571 seconds, using 8 threads
+Links visited: 196, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 96.6992 seconds, using 8 threads
+Links visited: 478, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 136.976 seconds, using 8 threads
+Links visited: 488, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 154.697 seconds, using 8 threads
+Links visited: 491, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 8.72467 seconds, using 16 threads
+Links visited: 89, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 11.6171 seconds, using 16 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 9.51356 seconds, using 16 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 22.395 seconds, using 16 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 17.9603 seconds, using 16 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 19.9223 seconds, using 16 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 54.3439 seconds, using 16 threads
+Links visited: 492, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 50.8571 seconds, using 16 threads
+Links visited: 497, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 77.7065 seconds, using 16 threads
+Links visited: 490, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 6.64019 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 38.5985 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 8.30796 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 23.5441 seconds, using 32 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 13.9021 seconds, using 32 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 42.9643 seconds, using 32 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 31.6971 seconds, using 32 threads
+Links visited: 487, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 149.484 seconds, using 32 threads
+Links visited: 498, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 40.7109 seconds, using 32 threads
+Links visited: 493, Tried to visit:500
+Links per thread: 1
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 101.943 seconds, using 1 threads
+Links visited: 94, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 69.7061 seconds, using 1 threads
+Links visited: 95, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 76.8341 seconds, using 1 threads
+Links visited: 96, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 270.03 seconds, using 1 threads
+Links visited: 183, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 168.274 seconds, using 1 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 301.36 seconds, using 1 threads
+Links visited: 195, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 631.347 seconds, using 1 threads
+Links visited: 484, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 672.126 seconds, using 1 threads
+Links visited: 480, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 720.742 seconds, using 1 threads
+Links visited: 480, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 147.374 seconds, using 2 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 148.808 seconds, using 2 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 123.87 seconds, using 2 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 151.96 seconds, using 2 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 480.851 seconds, using 2 threads
+Links visited: 192, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 390.577 seconds, using 2 threads
+Links visited: 196, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 861.812 seconds, using 2 threads
+Links visited: 481, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 777.617 seconds, using 2 threads
+Links visited: 484, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 917.411 seconds, using 2 threads
+Links visited: 485, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 137.134 seconds, using 4 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 110.451 seconds, using 4 threads
+Links visited: 92, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 131.377 seconds, using 4 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 187.463 seconds, using 4 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 299.952 seconds, using 4 threads
+Links visited: 198, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 266.839 seconds, using 4 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 707.387 seconds, using 4 threads
+Links visited: 479, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 740.318 seconds, using 4 threads
+Links visited: 497, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 674.334 seconds, using 4 threads
+Links visited: 496, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 98.9354 seconds, using 8 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 128.934 seconds, using 8 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 97.9586 seconds, using 8 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 136.117 seconds, using 8 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 108.675 seconds, using 8 threads
+Links visited: 198, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 80.0539 seconds, using 8 threads
+Links visited: 196, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 407.931 seconds, using 8 threads
+Links visited: 497, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 518.571 seconds, using 8 threads
+Links visited: 486, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 577.422 seconds, using 8 threads
+Links visited: 494, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 94.2882 seconds, using 16 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 7.67886 seconds, using 16 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 94.767 seconds, using 16 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 126.908 seconds, using 16 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 168.424 seconds, using 16 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 187.704 seconds, using 16 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 322.106 seconds, using 16 threads
+Links visited: 471, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 406.915 seconds, using 16 threads
+Links visited: 485, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 346.894 seconds, using 16 threads
+Links visited: 494, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 34.9803 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 34.1889 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 36.1952 seconds, using 32 threads
+Links visited: 101, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 127.379 seconds, using 32 threads
+Links visited: 201, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 87.4688 seconds, using 32 threads
+Links visited: 200, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 96.2625 seconds, using 32 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 229.088 seconds, using 32 threads
+Links visited: 489, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 228.122 seconds, using 32 threads
+Links visited: 499, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 225.435 seconds, using 32 threads
+Links visited: 492, Tried to visit:500
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 97.7104 seconds, using 1 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 138.113 seconds, using 1 threads
+Links visited: 97, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 119.384 seconds, using 1 threads
+Links visited: 100, Tried to visit:100
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 264.552 seconds, using 1 threads
+Links visited: 197, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 264.613 seconds, using 1 threads
+Links visited: 192, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 267.334 seconds, using 1 threads
+Links visited: 195, Tried to visit:200
+Links per thread: 2
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 84.6445 seconds, using 1 threads
+Links visited: 96, Tried to visit:100
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 117.067 seconds, using 1 threads
+Links visited: 93, Tried to visit:100
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 90.6838 seconds, using 1 threads
+Links visited: 97, Tried to visit:100
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 143.272 seconds, using 1 threads
+Links visited: 198, Tried to visit:200
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 179.303 seconds, using 1 threads
+Links visited: 197, Tried to visit:200
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 172.368 seconds, using 1 threads
+Links visited: 199, Tried to visit:200
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 422.372 seconds, using 1 threads
+Links visited: 491, Tried to visit:500
+Links per thread: 4
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 936.099 seconds, using 4 threads
+Links visited: 9479, Tried to visit:10000
+Links per thread: 8
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 1009.87 seconds, using 4 threads
+Links visited: 9382, Tried to visit:10000
+Links per thread: 8
+--------------------------------------------
+--------------------------------------------
+Elapsed time: 981.975 seconds, using 4 threads
+Links visited: 9465, Tried to visit:10000
+Links per thread: 8
+--------------------------------------------
